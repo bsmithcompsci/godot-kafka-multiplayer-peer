@@ -43,9 +43,11 @@ file(GLOB_RECURSE LIB_HEADERS "src/kafkalib/*.hpp" "src/kafkalib/*.h" "include/k
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 find_package(OpenSSL REQUIRED)
 set(system_library_extension "lib")
-if (UNIX)
+
+if(UNIX)
     set(system_library_extension "a")
 endif()
+
 find_library(CRYPTO_LIB libcrypto.${system_library_extension} REQUIRED)
 find_library(SSL_LIB libssl.${system_library_extension} REQUIRED)
 
@@ -55,17 +57,17 @@ if(OPENSSL_FOUND)
     link_libraries(OpenSSL::Crypto)
 endif()
 
-if (CRYPTO_LIB)
+if(CRYPTO_LIB)
     message(STATUS "Found libcrypto: ${CRYPTO_LIB}")
     link_libraries(${CRYPTO_LIB})
 endif()
 
-if (SSL_LIB)
+if(SSL_LIB)
     message(STATUS "Found libssl: ${SSL_LIB}")
     link_libraries(${SSL_LIB})
 endif()
 
-add_library(KafkaLib STATIC 
+add_library(KafkaLib STATIC
     ${LIB_SOURCES}
     ${LIB_HEADERS}
 )
@@ -91,15 +93,3 @@ target_link_libraries(KafkaLib PUBLIC rdkafka) # rdkafka is the C library and th
 target_link_libraries(KafkaLib PUBLIC rdkafka++) # rdkafka++ is a C++ wrapper around librdkafka
 set_target_properties(rdkafka PROPERTIES FOLDER "External/rdkafka")
 set_target_properties(rdkafka++ PROPERTIES FOLDER "External/rdkafka")
-
-if (BUILD_TESTS)
-    add_executable(TestKafkaLib 
-        ${TEST_SOURCES}
-        ${TEST_HEADERS}
-    )
-
-    target_link_libraries(TestKafkaLib PRIVATE KafkaLib)
-
-    # Force Visual Studio to set this target as the startup project
-    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT TestKafkaLib)
-endif()
