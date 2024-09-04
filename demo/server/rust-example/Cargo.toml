@@ -2,5 +2,19 @@
 name = "rust-example"
 version = "0.1.0"
 edition = "2021"
+publish = false
 
 [dependencies]
+axum = { version = "0.7", features = ["ws", "tokio"] }
+# axum-server = { version = "0.7", features = ["tls-rustls"] }
+axum-extra = { version = "0.9.3", features = ["typed-header"] }
+futures = "0.3"
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+headers = "0.4"
+tokio = { version = "1.4", features = ["full"] }
+tokio-tungstenite = "0.23"
+tower = { version = "0.5", features = ["util"] }
+tower-http = { version = "0.5", features = ["fs", "trace"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+rdkafka = { version = "0.36.2", features = ["cmake-build"] }
