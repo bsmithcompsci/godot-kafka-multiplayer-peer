@@ -1,0 +1,78 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "preLaunchTask": "CMake: build",
+            "name": "Debug GodotKafka",
+            "program": "${workspaceFolder}/godot-editor/Godot_v4.3-stable_win64.exe",
+            "args": [
+                "--debug",
+                "--path",
+                "${workspaceFolder}/demo/client"
+            ],
+            "cwd": "${workspaceFolder}",
+        },
+        // {
+        //     "name": "Debug GodotKafka",
+        //     "type": "godot",
+        //     "request": "launch",
+        //     "project": "${workspaceFolder}/demo/client",
+        //     "scene": "main",
+        //     "editor_path": "${workspaceFolder}/godot-editor/Godot_v4.3-stable_win64.exe",
+        //     "profiling": false,
+        //     "single_threaded_scene": false,
+        //     "debug_avoidance": false,
+        //     "debug_navigation": false,
+        //     "debug_collisions": false,
+        //     "debug_paths": false,
+        //     "debug_stringnames": false,
+        //     "frame_delay": 0,
+        //     "time_scale": 1.0,
+        //     "disable_vsync": false,
+        //     "fixed_fps": 60,
+        //     "additional_options": ""
+        // },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'rust-example'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=rust-example",
+                    "--package=rust-example"
+                ],
+                "filter": {
+                    "name": "rust-example",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'rust-example'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=rust-example",
+                    "--package=rust-example"
+                ],
+                "filter": {
+                    "name": "rust-example",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
