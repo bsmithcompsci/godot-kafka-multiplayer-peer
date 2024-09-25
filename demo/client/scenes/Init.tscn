@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://e1hnqdibrys"]
+[gd_scene load_steps=3 format=3 uid="uid://e1hnqdibrys"]
 
 [ext_resource type="Script" path="res://scripts/network_manager.gd" id="1_jbx0p"]
+[ext_resource type="Script" path="res://scripts/who_am_i.gd" id="2_20yil"]
 
 [node name="Init" type="Node"]
 
@@ -26,3 +27,4 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "Hello World!"
 horizontal_alignment = 1
+script = ExtResource("2_20yil")
