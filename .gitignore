@@ -1,3 +1,6 @@
+# tools
+.godot-editor/
+
 # Visual Studio
 .sln/
 
