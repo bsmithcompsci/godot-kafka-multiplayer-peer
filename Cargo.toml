@@ -1,2 +1,3 @@
 [workspace]
-members = ["demo/server/rust-example"]
+resolver = "2"
+members = ["demo/backend/edge-service/rust-example"]
